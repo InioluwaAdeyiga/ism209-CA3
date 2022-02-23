@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Biodatum } from '../biodata/entities/biodatum.entity';
 import { CreateLinkedidentityDto } from './dto/create-linkedidentity.dto';
-import { UpdateLinkedidentityDto } from './dto/create-linkedidentity.dto';
+import { UpdateLinkedidentityDto } from './dto/update-linkedidentity.dto';
 import { linkedidentity } from './entities/linkedidentity.entity';
 
 @Injectable()
@@ -17,14 +17,14 @@ export class LinkedidentityService {
     private biodatumRepository: Repository<Biodatum>
   ) { }
 
-  async create(createLinkedIdentityDto: CreateLinkedidentityDto) {
+  async create(createLinkedidentityDto: CreateLinkedidentityDto) {
     //return 'This action adds a new student';
     const newLinkedidentity = this.linkedidentityRepository.create(createLinkedidentityDto);
     //ideally, below should be wrapped in a transaction so that it can roll back if there is error in any of the stages.
-    if (createLinkedidentityDto.biodatum) {
-      const newBiodatum = this.biodatumRepository.create(createLinkedidentityDto.user);
-      const biodatum: Biodatum = await this.biodatumRepository.save(newBiodatum);
-      newLinkedidentity.Biodatum = biodatum;
+    if (createLinkedidentityDto.user) {
+      const newLinkedidentity = this.biodatumRepository.create(createLinkedidentityDto.user);
+      const biodata: Biodatum = await this.biodatumRepository.save(newLinkedidentity);
+      newLinkedidentity.user = biodata;
     }
     return this.linkedidentityRepository.save(newLinkedidentity)
   }
@@ -50,12 +50,12 @@ export class LinkedidentityService {
   }
 
   /* Work on relationships */
-  async setUserById(studentId: number, userId: number) {
+  async setUserById(linkedidentityId: number, biodatumId: number) {
     try {
       return await this.linkedidentityRepository.createQueryBuilder()
-        .relation(Student, "user")
-        .of(studentId)
-        .set(userId)
+        .relation(LinkedidentityService, "user")
+        .of(linkedidentityId)
+        .set(biodatumId)
     } catch (error) {
       throw new HttpException({
         status: HttpStatus.INTERNAL_SERVER_ERROR,
@@ -64,11 +64,11 @@ export class LinkedidentityService {
     }
   }
 
-  async unsetUserById(studentId: number) {
+  async unsetUserById(linkedidentityId: number) {
     try {
       return await this.linkedidentityRepository.createQueryBuilder()
-        .relation(Student, "user")
-        .of(studentId)
+        .relation(linkedidentity, "user")
+        .of(linkedidentity)
         .set(null)
     } catch (error) {
       throw new HttpException({
