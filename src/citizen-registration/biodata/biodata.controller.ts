@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Put, Render } from '@nestjs/common';
 import { BiodataService } from './biodata.service';
 import { CreateBiodatumDto } from './dto/create-biodatum.dto';
 import { UpdateBiodatumDto } from './dto/update-biodatum.dto';
@@ -16,7 +16,10 @@ export class BiodataController {
   findAll() {
     return this.biodataService.findAll();
   }
-
+  @Get('create') 
+  @Render('biodata/create-user.html') 
+  createForm() {
+  }
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.biodataService.findOne(+id);

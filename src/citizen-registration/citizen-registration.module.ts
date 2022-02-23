@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
 import { BiodataModule } from './biodata/biodata.module';
-import { LinkedIdentityModule } from './linked-identity/linked-identity.module';
+
+import { LinkedidentityModule } from './linkedidentity/linkedidentity.module';
 
 @Module({
-  imports: [BiodataModule, LinkedIdentityModule]
+  imports: [BiodataModule, LinkedidentityModule]
 })
 export class CitizenRegistrationModule {}

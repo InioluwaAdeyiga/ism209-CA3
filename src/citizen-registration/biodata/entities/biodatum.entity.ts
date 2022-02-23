@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { linkedidentity } from "../../../citizen-registration/linkedidentity/entities/linkedidentity.entity"
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 @Entity()
     export class Biodatum {
         @PrimaryGeneratedColumn() 
@@ -21,4 +22,6 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
         residenceaddress: string
         @Column({nullable: true}) 
         profession: string
+        @OneToOne(type => linkedidentity, linkedidentity => linkedidentity.Biodatum)
+        linkedidentity: linkedidentity;
      }
