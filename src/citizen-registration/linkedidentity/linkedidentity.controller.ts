@@ -22,13 +22,14 @@ export class LinkedidentityController {
     return this.linkedidentityService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateLinkedidentityDto: UpdateLinkedidentityDto) {
-    return this.linkedidentityService.update(+id, updateLinkedidentityDto);
+  @Patch(':linkedidentity/biodatum/biodatumid')
+  setUserById(@Param('linkedidentityId') linkedidentityId: number, @Param('biodatumId') biodatumId: number) {
+    return this.linkedidentityService.setUserById(linkedidentityId, biodatumId);
+    }
+
+  @Delete(':linkedidentityid/biodata')
+  unsetUserById(@Param('linkedidentityId') linkidentityId: number) {
+    return this.linkedidentityService.unsetUserById(linkidentityId);
+    }
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.linkedidentityService.remove(+id);
-  }
-}

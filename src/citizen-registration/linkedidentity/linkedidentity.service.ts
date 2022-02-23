@@ -11,48 +11,48 @@ export class LinkedidentityService {
 
   constructor(
     @InjectRepository(linkedidentity)
-    private studentRepository: Repository<linkedidentity>,
+    private linkedidentityRepository: Repository<linkedidentity>,
 
     @InjectRepository(Biodatum)
-    private userRepository: Repository<Biodatum>
+    private biodatumRepository: Repository<Biodatum>
   ) { }
 
-  async create(createStudentDto: CreateLinkedidentityDto) {
+  async create(createLinkedIdentityDto: CreateLinkedidentityDto) {
     //return 'This action adds a new student';
-    const newStudent = this.studentRepository.create(createStudentDto);
+    const newLinkedidentity = this.linkedidentityRepository.create(createLinkedidentityDto);
     //ideally, below should be wrapped in a transaction so that it can roll back if there is error in any of the stages.
-    if (createStudentDto.user) {
-      const newUser = this.userRepository.create(createStudentDto.user);
-      const user: Biodatum = await this.userRepository.save(newUser);
-      newStudent.Biodatum = user;
+    if (createLinkedidentityDto.biodatum) {
+      const newBiodatum = this.biodatumRepository.create(createLinkedidentityDto.user);
+      const biodatum: Biodatum = await this.biodatumRepository.save(newBiodatum);
+      newLinkedidentity.Biodatum = biodatum;
     }
-    return this.studentRepository.save(newStudent)
+    return this.linkedidentityRepository.save(newLinkedidentity)
   }
 
   async findAll() {
     //return `This action returns all students`;
-    return await this.studentRepository.find({ relations: ['user'] });
+    return await this.linkedidentityRepository.find({ relations: ['biodatum'] });
   }
 
   async findOne(id: number) {
     //return `This action returns a #${id} student`;
-    return await this.studentRepository.findOne(id);
+    return await this.linkedidentityRepository.findOne(id);
   }
 
-  async update(id: number, updateStudentDto: UpdateLinkedidentityDto) {
+  async update(id: number, updatelinkedidentityDto: UpdateLinkedidentityDto) {
     //return `This action updates a #${id} student`;
-    return await this.studentRepository.update(id, updateStudentDto);
+    return await this.linkedidentityRepository.update(id, updatelinkedidentityDto);
   }
 
   async remove(id: number) {
     //return `This action removes a #${id} student`;
-    return await this.studentRepository.delete(id);
+    return await this.linkedidentityRepository.delete(id);
   }
 
   /* Work on relationships */
   async setUserById(studentId: number, userId: number) {
     try {
-      return await this.studentRepository.createQueryBuilder()
+      return await this.linkedidentityRepository.createQueryBuilder()
         .relation(Student, "user")
         .of(studentId)
         .set(userId)
@@ -66,7 +66,7 @@ export class LinkedidentityService {
 
   async unsetUserById(studentId: number) {
     try {
-      return await this.studentRepository.createQueryBuilder()
+      return await this.linkedidentityRepository.createQueryBuilder()
         .relation(Student, "user")
         .of(studentId)
         .set(null)
