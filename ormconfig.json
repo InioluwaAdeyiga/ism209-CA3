@@ -1,0 +1,11 @@
+{
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5436,
+    "username": "postgres", 
+    "password": "bookexampledbpassword", 
+    "database": "ism209CA3", 
+    "entities": [ "dist/**/*.entity{.ts,.js}"
+    ],
+    "synchronize": true
+    }
