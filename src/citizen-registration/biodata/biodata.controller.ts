@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Put, Render } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Put, Render } from '@nestjs/common';
 import { BiodataService } from './biodata.service';
 import { CreateBiodatumDto } from './dto/create-biodatum.dto';
 import { UpdateBiodatumDto } from './dto/update-biodatum.dto';
