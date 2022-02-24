@@ -1,4 +1,3 @@
-import { ModeOfEntry } from "../../../citizen-registration/studentRegistration.types";
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Biodatum } from "src/citizen-registration/biodata/entities/biodatum.entity";
 @Entity()
