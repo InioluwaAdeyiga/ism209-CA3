@@ -24,4 +24,5 @@ import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
         profession: string
         @OneToOne(type => linkedidentity, linkedidentity => linkedidentity.Biodatum)
         linkedidentity: linkedidentity;
+  biodatum: Biodatum;
      }
