@@ -13,8 +13,6 @@ import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
         @Column() 
         dateOfBirth: Date;
         @Column({nullable: true}) 
-        nationality: string
-        @Column({nullable: true}) 
         countryofbirth: string
         @Column({nullable: true}) 
         stateofbirth: string

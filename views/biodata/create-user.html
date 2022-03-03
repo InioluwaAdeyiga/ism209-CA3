@@ -54,31 +54,49 @@
                 <div class="field">
                     <label class="label">Country Of Birth:</label>
                     <div class="control has-icons-right">
-                        <input class="input" id="nationality" name="nationality" type="text" placeholder="Country Of Birth">
+                        <input class="input" id="countryofbirth" name="countryofbirth" type="text" placeholder="Country Of Birth">
                     </div>
                 </div>
                 <div class="field">
                     <label class="label">State Of Birth:</label>
                     <div class="control has-icons-right">
-                        <input class="input" id="address" name="address" type="text" placeholder="State Of Birth">
+                        <input class="input" id="stateofbirth" name="stateofbirth" type="text" placeholder="State Of Birth">
                     </div>
                 </div>
                 <div class="field">
                     <label class="label">Town Of Birth:</label>
                     <div class="control has-icons-right">
-                        <input class="input" id="address" name="address" type="text" placeholder="Town Of Birth">
+                        <input class="input" id="townofbirth" name="townofbirth" type="text" placeholder="Town Of Birth">
                     </div>
                 </div>
                 <div class="field">
                     <label class="label">Residence Address:</label>
                     <div class="control has-icons-right">
-                        <input class="input" id="address" name="address" type="text" placeholder=" Residdence Address">
+                        <input class="input" id="residenceaddress" name="residenceaddress" type="text" placeholder=" Residdence Address">
                     </div>
                 </div>
                 <div class="field">
                     <label class="label">Profession:</label>
                     <div class="control has-icons-right">
-                        <input class="input" id="address" name="address" type="text" placeholder="Profession">
+                        <input class="input" id="profession" name="profession" type="text" placeholder="Profession">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">National Identity Number:</label>
+                    <div class="control has-icons-right">
+                        <input class="input" id="nin" name="nin" type="text" placeholder="National Identity Number">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">BVN:</label>
+                    <div class="control has-icons-right">
+                        <input class="input" id="bvn" name="bvn" type="text" placeholder="BVN">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Mobile Number:</label>
+                    <div class="control has-icons-right">
+                        <input class="input" id="mobilenumber" name="mobilenumber" type="text" placeholder="Mobile Number">
                     </div>
                 </div>
                 <div class="field is-grouped">
@@ -162,7 +180,7 @@
             'Content-Type': 'application/json'
         },
         //credentials: 'same-origin',
-        body: JSON.stringify({ firstName, middleName, lastName, email, dateOfBirth, nationality, address })
+        body: JSON.stringify({ firstName, middleName, lastName, dateOfBirth, countryofbirth, stateofbirth, townofbirth, residenceaddress, profession,  })
     }
 
     //call fetch

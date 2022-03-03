@@ -3,7 +3,6 @@ export class CreateBiodatumDto {
     readonly middleName?: string; 
     readonly lastName: string; 
     readonly dateOfBirth?: Date; 
-    readonly nationality?:string 
     readonly countryofbirth?:string
     readonly sateofbirth?:string
     readonly townofbirth?:string
