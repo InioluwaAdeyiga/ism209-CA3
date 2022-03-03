@@ -2,13 +2,15 @@ import { linkedidentity } from "../../../citizen-registration/linkedidentity/ent
 import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 @Entity()
     export class Biodatum {
-        @PrimaryGeneratedColumn() 
+        @PrimaryGeneratedColumn()
+        id: number;
+        @Column({nullable: true})
         firstName: string;
         @Column({nullable: true}) 
         middleName: string;
         @Column() 
         lastName: string;
-        @Column({nullable: true}) 
+        @Column() 
         dateOfBirth: Date;
         @Column({nullable: true}) 
         nationality: string
