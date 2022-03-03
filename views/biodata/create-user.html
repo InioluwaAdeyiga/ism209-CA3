@@ -168,6 +168,12 @@
 
     const profession = document.getElementById('profession').value;
 
+    const nin = document.getElementById('nin').value;
+    
+    const bvn = document.getElementById('bvn').value;
+
+    const mobilenumber = document.getElementById('mobilenumber').value;
+
 
 
     //start the button spinner
@@ -180,11 +186,12 @@
             'Content-Type': 'application/json'
         },
         //credentials: 'same-origin',
-        body: JSON.stringify({ firstName, middleName, lastName, dateOfBirth, countryofbirth, stateofbirth, townofbirth, residenceaddress, profession,  })
+        body: JSON.stringify( {nin, bvn, mobilenumbber, biodatum:{firstname, middlename, lastName, dateofbirth, countryofbirth, townofbirth, residenceaddress, profession}})
+    
     }
 
     //call fetch
-    fetch('/biodata', init)
+    fetch('/linkedidentity', init)
         .then(response => response.json())
         .then(data => {
             //alert(JSON.stringify(data))

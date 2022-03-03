@@ -25,7 +25,7 @@ export class LinkedidentityService {
     if (createLinkedidentityDto.biodatum) {
       const newBiodatum = this.biodatumRepository.create(createLinkedidentityDto.biodatum);
       const Biodatum: Biodatum = await this.biodatumRepository.save(newBiodatum);
-      newlinkedidentity.Biodatum = Biodatum;
+      newlinkedidentity.biodatum = Biodatum;
     }
     return this.LinkedidentityRepository.save(newlinkedidentity)
   }

@@ -1,16 +1,18 @@
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Biodatum } from "src/citizen-registration/biodata/entities/biodatum.entity";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+
+
 @Entity()
 export class linkedidentity {
     @PrimaryGeneratedColumn() 
-    nin: number;
+    Nin: number;
     @Column() 
-    bvn: number;
+    Bvn: number;
     @Column()
-    mobilenumber: number;
+    mobileNumber: number;
     @JoinColumn()
-    @OneToOne(type => Biodatum, Biodatum => Biodatum.linkedidentity, {cascade:true}) 
-    linkedidentity: linkedidentity;
-    Biodatum: any;
+    @OneToOne(type => Biodatum, biodatum => biodatum.linkedidentity, {cascade:true}) 
+    biodatum: Biodatum;
+    
 }
 
